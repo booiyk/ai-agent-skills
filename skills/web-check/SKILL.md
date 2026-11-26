@@ -1,36 +1,30 @@
 ---
-name: web-check
-description: Ambil dan ringkas isi halaman web (teks, judul, gambar, struktur).
-metadata:
-  author: ai-agent-skills
-  version: "1.0.0"
-  license: UNLICENSED
+name: "web-check"
+version: "1.0.0"
+description: "Ambil dan ringkas isi halaman web (teks, judul, gambar, struktur)."
 ---
 
-# Web Check
+## Kapan
+Memeriksa isi halaman sebelum disimpan atau dirangkum.
+Memverifikasi data dari situs.
+Menyiapkan ringkasan untuk laporan.
 
-Ambil konten halaman web dan ringkas: judul, poin utama, gambar/video,
-link penting, dan halaman terkait.
-
-## Kapan dipakai
-
-- Memeriksa isi halaman sebelum disimpan atau dirangkum
-- Memverifikasi data dari situs
-- Menyiapkan ringkasan untuk laporan
-
-## Cara kerja
-
+## Langkah
 1. Masukkan URL.
-2. Ambil konten laman (`web_extract`).
+2. Ambil konten laman (web_extract).
 3. Tandai judul, poin utama, media, dan link penting.
 4. Catat asal / URL.
 
-## Pengecekan
+## CLI
 
-- URL valid.
-- Konten cocok dengan URL yang diminta.
-- Konten dinamis (script, menu, iklan) tidak diperlakukan sebagai isi utama.
+## Contoh
+URL: https://contoh.com/laporan.
+Output: judul, poin utama, link terkait.
 
-## Dependencies
+## Batasan
+URL harus valid.
+Konten dinamis (script, menu, iklan) tidak diperlakukan sebagai isi utama.
+Konten yang diakses harus sesuai URL.
 
-- Tool ekstraksi web (web_extract)
+## Referensi
+web_extract - alat ekstraksi halaman.

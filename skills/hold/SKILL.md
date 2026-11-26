@@ -1,36 +1,32 @@
 ---
-name: hold
-description: Jaga proses tetap berjalan di luar sesi terminal (nohup / tmux / bg + disown).
-metadata:
-  author: ai-agent-skills
-  version: "1.0.0"
-  license: UNLICENSED
+name: "hold"
+version: "1.0.0"
+description: "Jaga proses tetap berjalan di luar sesi terminal (nohup / tmux / bg + disown)."
 ---
 
-# Hold
+## Kapan
+Proses panjang (build, ekstraksi, download, simulasi).
+Ingin keluar terminal tanpa mematikan proses.
 
-Cara menjaga proses tetap berjalan meskipun terminal ditutup atau session
-diakhiri.
+## Langkah
+1. Pilih salah satu metode:
+   - nohup: nohup <cmd> > log.txt 2>&1 &
+   - tmux: tmux new -s nama && <cmd>; lanjut tmux attach, tmux detach, tmux kill-session
+   - bg + disown: <cmd> & disown
+2. Pastikan proses masih berjalan.
+3. Simpan log ke file.
 
-## Kapan dipakai
+## CLI
+nohup python3 long-task.py > task.log 2>&1 &
+tmux new -s build && npm run build
+<cmd> & disown
 
-- Proses panjang (build, ekstraksi, download, simulasi, dst)
-- Ingin keluar terminal tanpa mematikan proses
+## Contoh
+Jalankan scrape data 1 jam tanpa mengunci terminal.
 
-## Cara kerja
+## Batasan
+Proses tidak boleh bergantung pada shell yang mati.
+Cek log secara berkala.
 
-Pilih salah satu:
-
-- **nohup**: `nohup <cmd> > log.txt 2>&1 &`
-- **tmux**: `tmux new -s nama && <cmd>`; lanjut `tmux attach`, `tmux detach`, `tmux kill-session`
-- **bg + disown**: `<cmd> & disown`
-
-## Pengecekan
-
-- Proses terlihat di `ps` atau `jobs -l`.
-- Log tertulis ke file.
-- Tidak ada shell yang mati mematikan proses.
-
-## Dependencies
-
-- Terminal (bash / zsh)
+## Referensi
+Terminal (bash / zsh).

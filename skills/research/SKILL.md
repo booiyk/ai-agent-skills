@@ -1,36 +1,32 @@
 ---
-name: research
-description: Cari berita, riset, atau data, lalu ringkas hasilnya beserta sumbernya.
-metadata:
-  author: ai-agent-skills
-  version: "1.0.0"
-  license: UNLICENSED
+name: "research"
+version: "1.0.0"
+description: "Cari berita, riset, atau data, lalu ringkas hasilnya beserta sumber."
 ---
 
-# Research
+## Kapan
+Menemukan informasi terbaru.
+Membandingkan opsi atau harga.
+Mengumpulkan data untuk laporan atau keputusan.
 
-Cari informasi topik tertentu, lalu ringkas poin penting dengan sumber.
-
-## Kapan dipakai
-
-- Menemukan informasi terbaru
-- Membandingkan opsi atau harga
-- Mengumpulkan data untuk laporan / keputusan
-
-## Cara kerja
-
+## Langkah
 1. Tentukan topik / kata kunci.
-2. Cari dengan tool riset (`web_search`).
-3. Baca halaman kunci (`web_extract`) bila perlu.
+2. Cari dengan alat riset (web_search).
+3. Baca halaman kunci (web_extract) bila perlu.
 4. Ringkas: inti, bukti, dan sumber.
 5. Catat URL agar bisa diceklai kembali.
 
-## Pengecekan
+## CLI
 
-- Semua klaim punya sumber.
-- Data khusus mencantumkan tahun / sumber.
-- Hindari opini yang dipakai sebagai fakta.
+## Contoh
+Input: harga BBM Januari 2026.
+Output: ringkasan + daftar sumber URL.
 
-## Dependencies
+## Batasan
+Setiap klaim harus punya sumber.
+Data khusus mencantumkan tahun / sumber.
+Hindari opini yang dipakai sebagai fakta.
 
-- Tool riset (web_search / web_extract)
+## Referensi
+web_search - alat riset.
+web_extract - ekstraksi halaman.

@@ -1,35 +1,28 @@
 ---
-name: pdf-reader
-description: Baca isi dokumen PDF (teks, tabel, struktur halaman).
-metadata:
-  author: ai-agent-skills
-  version: "1.0.0"
-  license: UNLICENSED
+name: "pdf-reader"
+version: "1.0.0"
+description: "Baca isi dokumen PDF (teks, tabel, struktur halaman)."
 ---
 
-# PDF Reader
+## Kapan
+Membaca laporan, kontrak, atau modul.
+Menyalin isi tabel / teks ke berkas lain.
+Memeriksa isi sebelum tindakan lanjutan.
 
-Baca dokumen PDF dan ekstrak teks serta struktur halamannya.
-
-## Kapan dipakai
-
-- Membaca laporan, kontrak, atau modul
-- Menyalin isi tabel / teks ke berkas lain
-- Memeriksa isi sebelum tindakan lanjutan
-
-## Cara kerja
-
+## Langkah
 1. Lokasikan file PDF.
-2. Baca isi (read_file, atau tool ekstraksi PDF tertentu).
-3. Ringkas: jumlah halaman, bagian tabel / teks.
+2. Baca isi (read_file atau tool ekstraksi PDF).
+3. Ringkas: jumlah halaman, bagian teks / tabel.
 4. Tulis ke file / ringkasan sesuai kebutuhan.
 
-## Pengecekan
+## CLI
 
-- File valid (bukan corrupt).
-- Teks cocok dengan isi yang diharapkan.
-- Jika PDF tidak punya teks (hanya gambar), catat bahwa OCR diperlukan.
+## Contoh
+Baca laporan.pdf -> ekstrak teks + judul halaman -> simpan ke ringkasan.txt.
 
-## Dependencies
+## Batasan
+File PDF harus valid (bukan corrupt).
+- Jika PDF tidak punya teks (hanya gambar), OCR diperlukan.
 
-- read_file atau tool ekstraksi PDF
+## Referensi
+read_file atau tool ekstraksi PDF.

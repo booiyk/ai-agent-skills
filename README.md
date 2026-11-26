@@ -3,6 +3,10 @@
 Koleksi **skill AI agent** — file `SKILL.md` + contoh pakai, siap dipakai oleh
 agen AI (Claude, custom agent, dsb) sebagai unit kerja yang mandiri.
 
+> Setiap skill berisi file `SKILL.md` yang dibaca agent. Formatnya:
+> YAML frontmatter (`name`, `version`, `description`) + body berisi
+> `Kapan`, `Langkah`, `CLI`, `Contoh`, `Batasan`, `Referensi`.
+
 ## Struktur
 
 ```
@@ -20,22 +24,21 @@ ai-agent-skills/
 │       └── skills-schema.json    # JSON Schema format SKILL.md
 └── skills/
     ├── TEMPLATE.md               # Template skill baru
-    ├── INDEX.md                  # Daftar semua skill + ringkasan
-    ├── make-fun/                 # Entri bounty make.fun
+    ├── makefun/                  # Entri bounty make.fun
     ├── research/                 # Cari + ringkas berita/riset/harga
     ├── web-check/                # Ambil & ringkas halaman web
     ├── compile/                  # Bangun / proses project
     ├── hold/                     # Jaga proses di luar sesi terminal
     ├── pdf-reader/               # Baca dokumen PDF
-    └── summarize/                # Ringkasan teks → poin (contoh lengkap)
+    └── summarize/              # Ringkasan teks → poin (contoh lengkap)
 ```
 
 ## Cara pakai
 
-1. Salin `skills/TEMPLATE.md` menjadi `skills/<nama-skill>/SKILL.md`.
-2. Isi `name`, `description`, `instructions`, `dependencies`.
-3. Skill hanya menyertakan kode yang bisa diinstal; tidak menyimpan data
-   sensitif. Hasil generate (kalau ada) tidak di-commit.
+1. Agent (misal Muse) membaca daftar skill dari `skills/INDEX.md` (nama + deskripsi).
+2. Ketika tugas cocok dengan satu skill, agent membaca `SKILL.md` penuh.
+3. Ikuti instruksi di dalamnya: `Kapan`, `Langkah`, `CLI`, `Contoh`, `Batasan`, `Referensi`.
+4. Hasil dikirim kembali.
 
 ## Kontribusi
 
@@ -47,7 +50,7 @@ ai-agent-skills/
 
 Repo ini punya tiga lapisan validasi:
 
-1. **Pre-commit** — `python scripts/validate-skills.py` dijalankan saat
+1. **Pre-commit** — `python3 scripts/validate-skills.py` dijalankan saat
    `git commit` (pasang pre-commit dulu).
 2. **CI** — `.github/workflows/validate-skills.yml` jalan di GitHub atas
    push ke `main` dan pull request.

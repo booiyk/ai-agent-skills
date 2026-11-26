@@ -8,25 +8,40 @@ agen AI (Claude, custom agent, dsb) sebagai unit kerja yang mandiri.
 ```
 ai-agent-skills/
 ├── README.md
+├── LICENSE
+├── CONTRIBUTING.md
+├── scripts/
+│   └── validate-skills.py      # validasi skema SKILL.md (exit 0 kalau all OK)
 └── skills/
-    ├── TEMPLATE.md          # Template SKILL baru
-    └── example/             # Contoh skill yang sudah terisi
-        ├── SKILL.md
-        └── scripts/
+    ├── TEMPLATE.md             # Template skill baru
+    ├── INDEX.md                # Daftar semua skill + ringkasan
+    ├── make-fun/               # Entri bounty make.fun
+    ├── research/               # Cari + ringkas berita/riset/harga
+    ├── web-check/              # Ambil & ringkas halaman web
+    ├── compile/                # Bangun / proses project
+    ├── hold/                   # Jaga proses di luar sesi terminal
+    ├── pdf-reader/             # Baca dokumen PDF
+    └── summarize/              # Ringkasan teks → poin (contoh lengkap)
 ```
 
 ## Cara pakai
 
 1. Salin `skills/TEMPLATE.md` menjadi `skills/<nama-skill>/SKILL.md`.
-2. Isi `name`, `description`, dan isi inti skill.
-3. Unduhan/dependency ditulis di `SKILL.md` (bukan di repo) supaya skill tetap
-   ringan.
+2. Isi `name`, `description`, `instructions`, `dependencies`.
+3. Skill hanya menyertakan kode yang bisa diinstal; tidak menyimpan data
+   sensitif. Hasil generate (kalau ada) tidak di-commit.
 
 ## Kontribusi
 
-Tambah folder di `skills/`. Setiap skill wajib punya `SKILL.md` yang memuat:
+- Baca `CONTRIBUTING.md` — panduan menambah skill, aturan, dan validasi.
+- Validasi skema semua skill: `python scripts/validate-skills.py`
+- Daftar skill: `skills/INDEX.md`
+- Lisensi: MIT — file `LICENSE`
 
-- `name` — identitas unik skill
-- `description` — kapan skill ini dipakai
-- `instructions` — langkah-langkah konkret
-- `dependencies` — apa yang harus ada di environment
+## Validasi singkat
+
+```bash
+python3 scripts/validate-skills.py
+```
+
+> Harus exit 0, dan menampilkan `7/7 skill valid` (sesuai jumlah skill saat ini).

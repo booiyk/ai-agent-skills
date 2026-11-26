@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: validate-skills
+        name: Validate SKILL.md frontmatter
+        entry: python3 scripts/validate-skills.py
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://booiyk.github.io/ai-agent-skills/schemas/skills.json",
+  "title": "SKILL.md frontmatter",
+  "description": "Schema untuk frontmatter SKILL.md di repo ai-agent-skills.",
+  "type": "object",
+  "required": ["name", "description"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Identitas unik skill. lowercase, boleh dash atau dot."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Kapan skill ini dipakai."
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "string",
+          "description": "Pembuat/owner skill."
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+.*$",
+          "description": "Semver, contoh: 1.0.0"
+        },
+        "license": {
+          "type": "string",
+          "description": "Lisensi, contoh: MIT, UNLICENSED"
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
